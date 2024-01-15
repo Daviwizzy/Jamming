@@ -1,17 +1,37 @@
+// SearchBar.js
 import React, { Component } from 'react';
-import SearchBar from './SearchBar';
-import Playlist from './Playlist';
 
-class App extends Component {
+class SearchBar extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      searchTerm: ''
+    };
+  }
+
+  handleInputChange = (event) => {
+    this.setState({ searchTerm: event.target.value });
+  };
+
+  handleSearch = () => {
+    // Implement your search logic here, using this.state.searchTerm
+    console.log('Search term:', this.state.searchTerm);
+  };
+
   render() {
     return (
       <div>
-        <h1>Jammming</h1>
-        <SearchBar />
-        <Playlist />
+        <input
+          type="text"
+          placeholder="Search..."
+          value={this.state.searchTerm}
+          onChange={this.handleInputChange}
+        />
+        <button onClick={this.handleSearch}>Search</button>
       </div>
     );
   }
 }
 
-export default SearchResults;
+export default SearchBar;
